@@ -2,6 +2,10 @@ default:
     image: docker:19.03
     retry: 1
 
+services:
+    - name: docker:19.03-dind
+      alias: docker
+
 stages:
     - build
 
