@@ -22,9 +22,9 @@ build chromedriver:
 
     script:
         - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
-        - docker buildx build \
-            --platform linux/arm64/v8,linux/amd64 \
-            -t ${CI_REGISTRY_IMAGE} --push .
+        - docker buildx build
+            --platform linux/arm64/v8,linux/amd64
+            --tag ${CI_REGISTRY_IMAGE} --push .
 
     after_script:
         - docker buildx rm
