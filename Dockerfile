@@ -1,4 +1,4 @@
-FROM bitnami/minideb:bullseye
+FROM bitnami/minideb:buster
 
 # Install the base requirements to run and debug webdriver implementations:
 RUN install_packages chromium chromium-driver xvfb xauth x11vnc fluxbox rxvt-unicode curl unzip tini \
