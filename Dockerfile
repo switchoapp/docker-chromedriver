@@ -13,6 +13,6 @@ ENV SCREEN_WIDTH=1440 SCREEN_HEIGHT=900 SCREEN_DEPTH=24 DISPLAY=:0
 ENV CHROMIUM_FLAGS='--no-sandbox --disable-dev-shm-usage'
 
 ENTRYPOINT ["entrypoint", "chromedriver"]
-CMD ["--port=4444", "--whitelisted-ips="]
+CMD ["--port=4444", "--whitelisted-ips=", "--allowed-origins=*"]
 
 EXPOSE 4444
