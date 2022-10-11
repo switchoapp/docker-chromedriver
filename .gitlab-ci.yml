@@ -33,5 +33,5 @@ build chromedriver:
             echo "{\"auths\": {\"${CI_REGISTRY}\": {\"auth\": \"${BASE64_AUTH}\"}}}" > ~/.docker/config.json
 
         - docker buildx build
-            --platform linux/arm64/v8,linux/amd64
+            --platform linux/amd64
             --tag ${CI_REGISTRY_IMAGE}:bullseye --push .
