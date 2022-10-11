@@ -27,7 +27,11 @@ build chromedriver:
         - docker buildx create --use --driver remote tcp://buildkitd:1234
 
     script:
-        - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
+        - |   # docker login without docker engine
+            BASE64_AUTH=$(echo -n "gitlab-ci-token:${CI_JOB_TOKEN}" | base64)
+            mkdir -p ~/.docker
+            echo "{\"auths\": {\"${CI_REGISTRY}\": {\"auth\": \"${BASE64_AUTH}\"}}}" > ~/.docker/config.json
+
         - docker buildx build
             --platform linux/arm64/v8,linux/amd64
             --tag ${CI_REGISTRY_IMAGE}:bullseye --push .
